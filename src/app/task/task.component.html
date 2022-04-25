@@ -1,0 +1,34 @@
+<div class="card mt-5" *ngIf="!taskData">
+  <div class="card-body">
+    <div class="container">
+      Hello, Welcome to Whrrl To-Do App. Currently you have no tasks.
+      <!-- TO-DO: Create a button for adding tasks. -->
+      <p class="mt-2">
+        <a routerLink="/add-task" class="btn btn-primary">Add tasks</a>
+      </p>
+      <p class="mt-2">
+        <a routerLink="/add-category" class="btn btn-primary">Add category</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="card-header mt-3">
+  Total Task{{ taskData.length > 1 ? "(s) " : " " }}: ({{ taskData.length }})
+</div>
+<div class="card mt-2" *ngFor="let task of taskData">
+  <div class="card-body">
+    <h5 class="card-title">{{ task.title }}</h5>
+    <p class="mt-2 btn btn-outline-primary">
+      Category:
+      <a routerLink="/category" class="card-text">
+        {{ task.category.name | titlecase }}</a
+      >
+    </p>
+    <p class="card-text">
+      {{ task.message }}
+    </p>
+    <a routerLink="/edit-task/{{ task._id }}" class="btn btn-primary"
+      >Edit Task</a
+    >
+  </div>
+</div>

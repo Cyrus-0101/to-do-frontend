@@ -1,0 +1,38 @@
+<form (submit)="formSubmit()">
+  <div class="mb-3">
+    <label for="Task Title" class="form-label">Title</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      [(ngModel)]="task.title"
+      class="form-control"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="Message" class="form-label">Message</label>
+    <input
+      type="text"
+      id="message"
+      name="message"
+      [(ngModel)]="task.message"
+      class="form-control"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="Category DropDown" class="form-label">Category List</label>
+    <select class="form-select">
+      <!-- TO-DO: Find Out how to bind changes to a dropdown. -->
+      <option
+        *ngFor="let category of categories"
+        value="{{ category.id }}"
+        name="task_category_name"
+        [(ngModel)]="task.category.name"
+      >
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

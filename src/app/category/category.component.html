@@ -1,0 +1,26 @@
+<div class="card mt-5" *ngIf="!categoriesData">
+  <div class="card-body">
+    <div>
+      Hello, Welcome to Whrrl To-Do App. Currently you have no categories.
+      <!-- TO-DO: Create a button for adding tasks. -->
+      <a href="#" class="btn btn-primary">Add A Category</a>
+    </div>
+  </div>
+</div>
+
+<div class="card-header mt-4">
+  Category Count{{ categoriesData.length > 3 ? "(s) " : " " }}: ({{
+    categoriesData.length
+  }})
+</div>
+<div class="card mt-2" *ngFor="let category of categoriesData">
+  <div class="card-body">
+    <h5 class="card-title">{{ category.name | titlecase }}</h5>
+    <p class="card-text">
+      {{ category.updatedAt | date }}
+    </p>
+    <a routerLink="/edit-category/{{ category._id }}" class="btn btn-primary"
+      >Edit Category</a
+    >
+  </div>
+</div>
